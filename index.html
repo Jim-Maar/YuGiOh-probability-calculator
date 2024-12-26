@@ -1,0 +1,68 @@
+<style>
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-auto-rows: auto;
+        width: 800px;
+        border-width: 3px;
+    }
+
+    .probs-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-auto-rows: auto;
+        width: 800px;
+        border-width: 3px;
+    }
+</style>
+
+<html>
+    <head>
+    </head>
+    <body>
+        <div class = "page-container">
+            <h1>Ultimate YoGiOh probability Calculator</h1>
+            <button>-Tutorial-</button>
+            <div>
+                <p>Decksize</p>
+                <input type="text" placeholder="Enter Decksize" value=40>
+            </div> 
+            <div>
+                <p>Handsize</p>
+                <input type="text" placeholder="Enter Handsize" value=5>
+            </div>
+            <div>
+                <h2>Cards</h2>
+                <div class="cards-container">
+                    <div>Name</div>
+                    <div>Num</div>
+                    <div>Min</div>
+                    <div>Max</div>
+
+                    <div>Misc.</div>
+                    <div>40</div>
+                    <div>1</div>
+                    <div>5</div>
+
+                    <div>
+                        <button>Add Card</button>
+                    </div>
+                </div>
+                <h2>Probabilies</h2>
+                <div class="probs-container">
+                    <div>Hand</div>
+                    <div>Probabilites</div>
+
+                    <div>Weißer Blauer Drache AND Exodia Arm</div>
+                    <div>20 %</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

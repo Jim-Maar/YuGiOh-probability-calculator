@@ -10,6 +10,33 @@
 - Observer
 - Callback functions
 
+# Directory Stuff
+- standart folder setup is different for vanilla javascript and typescript
+- javascript:
+my-project/
+├── scripts/
+│   ├── main.js
+│   └── utils.js
+└── index.html  <!-- directly links to scripts/main.js -->
+- typescript
+my-project/
+├── src/
+│   ├── main.ts
+│   └── utils.ts
+├── public/
+│   └── index.html  <!-- links to built bundle, not source files -->
+└── dist/  <!-- built files go here -->
+
+# Typescript
+- Typescript is great because
+    - you catch type errors faster
+    - you know what type everything is
+    - you can look at documentation in the ide
+    - better refactoring
+
 # Random
-- rename a variable by hovering over it and clicking f2 
+- rename a variable by hovering over it and clicking f2
+
+# Questions
+- How do you do something in the cloud (do I have to use node.js?)
 

@@ -37,6 +37,22 @@ my-project/
 # Random
 - rename a variable by hovering over it and clicking f2
 
+# Hosting
+- There are Backend as a Service platforms, where you can skip making the backend from scratch and host stuff
+- https://www.youtube.com/watch?v=cw34KMPSt4k pretty nice way to host a website for low cost
+    - The main disadvantage is that you have a few seconds cold start (I think this is not too bad though)
+    - The advantage is that I can try out having a professional 
+- https://www.youtube.com/watch?v=d_jjPhh8PJo
+    - explains how to host a website without backend
+- https://github.com/alexander-turner/TurnTrout.com/tree/main
+    - Blog website von Alex Turner
+
+- Für Blog / Personal website: Ich will nichts bezahlen und ich will, dass es schnell lädt: also nur React + Typescript
+- Für Game: Game Läuft in Python Backend mit Websockets, Kosten sollen klein sein: Serverless Backend mit Google Cloud run
+- Für Yugioh Calculator: (Entweder einfach nur react oder zum üben flask backend, react frontend) (Zum üben ist das glaube ich ganz geil!) (Wieder Google Cloud Run serverless)
+
 # Questions
 - How do you do something in the cloud (do I have to use node.js?)
 
+# React
+- Very useful for building a react website step by step: https://react.dev/learn/thinking-in-react

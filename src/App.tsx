@@ -51,7 +51,7 @@ function App() {
       <DeckSizeSelector deckSize={deckSize} onDeckSizeChange={setDeckSize}></DeckSizeSelector>
       <HandSizeSelector handSize={handSize} onHandSizeChange={setHandSize}></HandSizeSelector>
       <DeckTable cards={cards} onAddCard={onHandleAddCard} onRemoveCard={onHandleRemoveCard}></DeckTable>
-      <ProbabilitiesTable hands={hands} cards={cards} onChangeHands={setHands}></ProbabilitiesTable>
+      <ProbabilitiesTable hands={hands} cards={cards} deckSize={deckSize} handSize={handSize} onChangeHands={setHands}></ProbabilitiesTable>
     </div>
   )
 }

@@ -18,7 +18,7 @@ type HandSelectorProps = {
 }
 
 /**
- * HandSelector Component - Area in which the user can add a combination of, for which they want to get the probability.
+ * HandSelector Component - Area in which the user can add a combination of cards, for which they want to get the probability.
  * 
  * One hand is of type DNF (Disjunctive Normal Form), meaning that it consists of multiple Conjunctions of cards (e.g. Card A AND Card B) that you want to draw.
  * with the final probability being the probability of fulfilling any of the Conjunctions of cards (e.g. (Card A AND Card B) OR (Card C)).

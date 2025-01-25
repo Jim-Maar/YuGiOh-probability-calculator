@@ -8,6 +8,8 @@ import { getProbability } from 'utils/probability';
 type ProbabilitiesTableProps = {
   hands: DNF[];
   cards: Card[];
+  deckSize: number,
+  handSize: number,
   onChangeHands: (hands: DNF[]) => void;
 }
 
@@ -20,7 +22,7 @@ type ProbabilitiesTableProps = {
  * @param {Card[]} cards - Array of available cards to select from.
  * @param {function} onChangeHands - Callback function to update the hands array.
  */
-export const ProbabilitiesTable: React.FC<ProbabilitiesTableProps> = ({ hands, cards, onChangeHands }) => {
+export const ProbabilitiesTable: React.FC<ProbabilitiesTableProps> = ({ hands, cards, deckSize, handSize, onChangeHands }) => {
   const handleAddHand = () => {
     const newHand: DNF = [[]];
     onChangeHands([...hands, newHand]);
@@ -47,7 +49,7 @@ export const ProbabilitiesTable: React.FC<ProbabilitiesTableProps> = ({ hands, c
             </td>
             <td style={{ width: '20%'}}>
               <div style={{display: 'flex', justifyContent: 'center'}}>
-                {getProbability(hand)}%
+                {getProbability(cards, hand, deckSize, handSize)}%
               </div>
             </td>
           </tr>

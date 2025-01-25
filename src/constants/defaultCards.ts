@@ -3,6 +3,7 @@ import { DNF } from "types/dnf";
 
 export const DECKSIZE = 40;
 export const HANDSIZE = 5;
+export const SMAPLE_SIZE = 100000;
 
 /*
 * The Following Constants are only used for testing.

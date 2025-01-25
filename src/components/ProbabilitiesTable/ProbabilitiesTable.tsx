@@ -3,7 +3,7 @@ import { DNF } from 'types/dnf';
 import { Card } from 'types/card';
 import { HandContextProvider } from 'context/HandContext.tsx';
 import { HandSelector } from './HandSelector/HandSelector';
-import { getProbability } from 'utils/probability';
+import { Probability } from './Probability/Probability';
 
 type ProbabilitiesTableProps = {
   hands: DNF[];
@@ -49,7 +49,7 @@ export const ProbabilitiesTable: React.FC<ProbabilitiesTableProps> = ({ hands, c
             </td>
             <td style={{ width: '20%'}}>
               <div style={{display: 'flex', justifyContent: 'center'}}>
-                {getProbability(cards, hand, deckSize, handSize)}%
+                <Probability cards={cards} hand={hand} deckSize={deckSize} handSize={handSize}></Probability>
               </div>
             </td>
           </tr>

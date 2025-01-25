@@ -1,6 +1,7 @@
 import { Conjunction, DNF } from '../types/dnf';
 import { Card } from '../types/card'
 import { Term } from '../types/dnf';
+import { SMAPLE_SIZE } from '../constants/defaultCards';
 
 function getDeck(cards : Card[], deckSize: number) {
   const deck: number[] = [];
@@ -62,8 +63,14 @@ function isDnfFulfilled(cards: Card[], cardsDrawn: number[], hand: DNF) : boolea
   return false;
 }
 
-const SMAPLE_SIZE = 50000;
-
+/**
+ * Get Probability Function - Probability of fulfilling the DNF (drawing the wanted cards)
+ * @param cards 
+ * @param hand 
+ * @param deckSize 
+ * @param handSize 
+ * @returns probability in percent, as string
+ */
 export function getProbability(cards: Card[], hand: DNF, deckSize: number, handSize: number): string {
   const deck = getDeck(cards, deckSize);
   let countFulfilled = 0;
@@ -74,5 +81,5 @@ export function getProbability(cards: Card[], hand: DNF, deckSize: number, handS
       countFulfilled ++;
     }
   }
-  return (countFulfilled / SMAPLE_SIZE * 100).toFixed(1);
+  return (countFulfilled / SMAPLE_SIZE * 100).toFixed(0);
 }

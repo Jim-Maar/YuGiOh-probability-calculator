@@ -17,6 +17,6 @@ export type Conjunction = Term[];
 /**
  * Represents a combination of YuGiOh cards, for which you want to calculate the probability of drawing them.
  * 
- * It is in the format of a disjunctive normal form, but instead of boolean variables you have cards that you want to draw (e.g. (Card A AND not Card B) or (Card C)).
+ * It is in the format of a disjunctive normal form, but instead of boolean variables you have cards that you want to draw (e.g. (Card A AND not Card B) OR (Card C)).
  */
 export type DNF = Conjunction[];

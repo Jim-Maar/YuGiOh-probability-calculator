@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Card } from 'types/card'
-import { Term } from 'types/dnf'
+import { DNF, Term } from 'types/dnf'
 import { Tutorial } from './components/Tutorial/Tutorial'
 import { DeckSizeSelector } from './components/DeckSizeSelector/DeckSizeSelector'
 import { HandSizeSelector } from './components/HandSizeSelector/HandSizeSelector'
 import { DeckTable } from './components/DeckTable/DeckTable'
 import { ProbabilitiesTable } from './components/ProbabilitiesTable/ProbabilitiesTable'
-import { DECKSIZE, HANDSIZE, CARDS, HANDS } from './constants/defaultCards'
+import { DECKSIZE, HANDSIZE } from './constants/defaultCards'
 
 /**
  * YuGiOh Probability Calculator - A React application for calculating probabilities of drawing various combinations of cards.
@@ -17,8 +17,8 @@ import { DECKSIZE, HANDSIZE, CARDS, HANDS } from './constants/defaultCards'
 function App() {
   const [deckSize, setDeckSize] = useState(DECKSIZE);
   const [handSize, setHandSize] = useState(HANDSIZE);
-  const [cards, setCards] = useState(CARDS);
-  const [hands, setHands] = useState(HANDS);
+  const [cards, setCards] = useState<Card[]>([]);
+  const [hands, setHands] = useState<DNF[]>([]);
 
   function onHandleAddCard(card : Card) {
     setCards([...cards, card]);
@@ -47,6 +47,7 @@ function App() {
       <HandSizeSelector handSize={handSize} onHandSizeChange={setHandSize}></HandSizeSelector>
       <DeckTable cards={cards} onAddCard={onHandleAddCard} onRemoveCard={onHandleRemoveCard}></DeckTable>
       <ProbabilitiesTable hands={hands} cards={cards} deckSize={deckSize} handSize={handSize} onChangeHands={setHands}></ProbabilitiesTable>
+      <div style={{height: '100px'}}></div>
     </div>
   )
 }

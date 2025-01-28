@@ -57,7 +57,7 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
             <th className='table-data regular-column'>Num</th>
             <th className='table-data regular-column'>Min</th>
             <th className='table-data regular-column'>Max</th>
-            <th className='table-data regular-column'>Buttons</th>
+            <th className='table-data regular-column'></th>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +76,7 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
                 <div className='table-data'>{card.maxToDraw}</div>
               </td>
               <td className='regular-column'>
-                <button className='table-data-button' onClick={() => onRemoveCard(i)}>Remove</button>
+                <button className='table-data-button' onClick={() => onRemoveCard(i)}>Remove Card</button>
               </td>
             </tr>
           ))}
@@ -96,7 +96,7 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
                   <input className='table-data' type='number' name='maxToDraw' placeholder='Max to draw' defaultValue={3} />
                 </div>
                 <div className='regular-column'>
-                  <button className='table-data-button' type='submit'>Add</button>
+                  <button className='table-data-button' type='submit'>Add Card</button>
                 </div>
               </form>
             </td>

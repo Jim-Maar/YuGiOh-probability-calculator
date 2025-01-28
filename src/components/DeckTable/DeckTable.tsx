@@ -63,24 +63,40 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
         <tbody>
           {cards.map((card, i) => (
             <tr className='table-row' key={i}>
-              <td className='table-data first-column'>{card.name}</td>
-              <td className='table-data regular-column'>{card.numInDeck}</td>
-              <td className='table-data regular-column'>{card.minToDraw}</td>
-              <td className='table-data regular-column'>{card.maxToDraw}</td>
+              <td className='first-column'>
+                <div className='table-data'>{card.name}</div>
+              </td>
               <td className='regular-column'>
-                <button className='table-data-button' style={{width: '100%'}} onClick={() => onRemoveCard(i)}>Remove</button>
+                <div className='table-data'>{card.numInDeck}</div>
+              </td>
+              <td className='regular-column'>
+                <div className='table-data'>{card.minToDraw}</div>
+              </td>
+              <td className='regular-column'>
+                <div className='table-data'>{card.maxToDraw}</div>
+              </td>
+              <td className='regular-column'>
+                <button className='table-data-button' onClick={() => onRemoveCard(i)}>Remove</button>
               </td>
             </tr>
           ))}
           <tr key={cards.length}>
             <td colSpan={5}>
               <form className='table-row' onSubmit={submitAddCardForm}>
-                <input className='table-data first-column' type='text' name='name' placeholder='Name' />
-                <input className='table-data regular-column' type='number' name='numInDeck' placeholder='Num in deck' defaultValue={3} />
-                <input className='table-data regular-column' type='number' name='minToDraw' placeholder='Min to draw' defaultValue={1} />
-                <input className='table-data regular-column' type='number' name='maxToDraw' placeholder='Max to draw' defaultValue={3} />
+                <div className='first-column'>
+                  <input className='table-data' type='text' name='name' placeholder='Name' />
+                </div>
                 <div className='regular-column'>
-                  <button className='table-data-button' style={{width: '100%'}} type='submit'>Add</button>
+                  <input className='table-data' type='number' name='numInDeck' placeholder='Num in deck' defaultValue={3} />
+                </div>
+                <div className='regular-column'>
+                  <input className='table-data' type='number' name='minToDraw' placeholder='Min to draw' defaultValue={1} />
+                </div>
+                <div className='regular-column'>
+                  <input className='table-data' type='number' name='maxToDraw' placeholder='Max to draw' defaultValue={3} />
+                </div>
+                <div className='regular-column'>
+                  <button className='table-data-button' type='submit'>Add</button>
                 </div>
               </form>
             </td>

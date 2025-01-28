@@ -81,7 +81,7 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
             </tr>
           ))}
           <tr key={cards.length}>
-            <td colSpan={5}>
+            <td colSpan={5} style={{padding: 0}}>
               <form className='table-row' onSubmit={submitAddCardForm}>
                 <div className='first-column'>
                   <input className='table-data' type='text' name='name' placeholder='Name' />

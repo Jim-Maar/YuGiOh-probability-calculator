@@ -83,6 +83,18 @@ button:hover, .button:hover {
 
 
 /*
+App styling
+*/
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+
+/*
 Hand- and DeckSelector styling
 */
 

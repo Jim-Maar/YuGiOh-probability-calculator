@@ -40,12 +40,7 @@ function App() {
   }
 
   return (
-    <div style={{
-      display : 'flex',
-      flexDirection: 'column',
-      gap: '16px',
-      alignItems: 'center',
-    }}>
+    <div className="app">
       <h1>YuGiOh Probability Calculator</h1>
       <Tutorial></Tutorial>
       <DeckSizeSelector deckSize={deckSize} onDeckSizeChange={setDeckSize}></DeckSizeSelector>

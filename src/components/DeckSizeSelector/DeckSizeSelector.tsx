@@ -13,7 +13,7 @@ type DeckSizeSelectorProps = {
  */
 export const DeckSizeSelector: React.FC<DeckSizeSelectorProps> = ({ deckSize, onDeckSizeChange }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
+    <div className='deck-size-selector'>
       <p>Decksize: </p>
       <input 
         type="number" 

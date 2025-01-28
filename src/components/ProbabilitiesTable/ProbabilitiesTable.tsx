@@ -28,36 +28,32 @@ export const ProbabilitiesTable: React.FC<ProbabilitiesTableProps> = ({ hands, c
     onChangeHands([...hands, newHand]);
   };
 
-  return <div>
+  return <div className='table-section probabilities-table'>
     <h2>Probabilities</h2>
-    <table style={{width: '800px', borderCollapse: 'collapse'}}>
+    <table style={{width: '100%'}}>
       <thead>
-        <tr>
-          <th style={{ width: '80%' }}>Hand</th>
-          <th style={{ width: '20%' }}>Probability</th>
+        <tr className="table-row">
+          <th className='first-column'>Hand</th>
+          <th className='regular-column'>Probability</th>
         </tr>
       </thead>
       <tbody>
         {hands.map((hand, index) => (
-          <tr key={index}>
-            <td style={{ width: '80%' , padding: 0}}>
+          <tr className="table-row" key={index}>
+            <td className='first-column'>
               <HandContextProvider hands={hands} onChangeHands={onChangeHands}>
-                <div style={{ width: '100%'}}>
-                  <HandSelector hand={hand} cards={cards} handIndex={index} ></HandSelector>
-                </div>
+                <HandSelector hand={hand} cards={cards} handIndex={index} ></HandSelector>
               </HandContextProvider>
             </td>
-            <td style={{ width: '20%'}}>
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-                <Probability cards={cards} hand={hand} deckSize={deckSize} handSize={handSize}></Probability>
-              </div>
+            <td className='regular-column'>
+              <Probability cards={cards} hand={hand} deckSize={deckSize} handSize={handSize}></Probability>
             </td>
           </tr>
         ))}
         <tr>
           <td colSpan={2}>
             <button 
-              className="addHandButton"
+              className="add-hand-button"
               onClick={handleAddHand}
             >
               Add Hand

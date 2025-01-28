@@ -52,6 +52,6 @@ export const ConjunctionSelector: React.FC<ConjunctionSelectorProps> = ({ conjun
     </div>}
     position = "center center"
     >
-      <button onClick={() => onDeleteConjunction(handIndex, conjunctionIndex)} >Remove Conjunction</button>
+      <button className='highlighted-button' onClick={() => onDeleteConjunction(handIndex, conjunctionIndex)} >Remove Conjunction</button>
     </Popup>
 }

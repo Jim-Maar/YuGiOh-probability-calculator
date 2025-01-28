@@ -13,7 +13,7 @@ type ProbabilityProps = {
 
 export const Probability: React.FC<ProbabilityProps> = ({cards, hand, deckSize, handSize}) => {
   const probability = useMemo(() => getProbability(cards, hand, deckSize, handSize), [cards, hand, deckSize, handSize]);
-  return <div>
+  return <div style={{textAlign: 'center', flex: 1, height: '100%', display: 'grid', placeItems: 'center'}}>
     {probability}%
   </div>;
 }

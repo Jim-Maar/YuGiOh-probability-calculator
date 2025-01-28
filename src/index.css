@@ -1,3 +1,7 @@
+/*
+Standart Vite Styling, with some adjustments
+*/
+
 html, body, #root {
   margin: 0;
   padding: 0;
@@ -32,7 +36,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -40,56 +45,23 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-.button {
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-.handSelector {
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0.3em 0.3em;
+  justify-content: center;
 }
 
-.addHandButton {
-  margin: 0.3em 0.3em;
+button, .button { /*The Button class is used to make divs look like buttons (This is important because nested buttons are not allowed)*/
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
-.addCardButton {
-  margin: 0em 0.5em;
-}
-
-.handSelectorButton {
-  margin: 0.3em 0.3em;
-}
-
-button:hover {
+button:hover, .button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
@@ -100,7 +72,96 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  button, .button {
     background-color: #f9f9f9;
   }
 }
+
+
+/*
+Hand- and DeckSelector styling
+*/
+
+.deck-size-selector, .hand-size-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/*
+DeckTable and ProbabilitiesTable styling
+*/
+
+.table-section, h1 {
+  width: clamp(200px, 95%, 1000px);
+}
+
+.table-row{
+  display: flex;
+  margin-bottom: 6px;
+  gap: 8px;
+}
+
+
+/*
+DeckTable styling
+*/
+
+.table-data, .table-data-button{
+  padding: 8px 12px;
+  line-height: 1.2;
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.deck-table .first-column {
+  flex: 2;
+}
+.deck-table .regular-column {
+  flex: 1;
+}
+
+/*
+ProbabilitiesTable styling
+*/
+
+.probabilities-table .first-column {
+  flex: 4;
+}
+.probabilities-table .regular-column {
+  flex: 1;
+}
+
+.hand-selector {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  margin: 0.3em 0.3em;
+}
+
+.conjunction-selectors {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.add-hand-button {
+  margin: 0.3em 0.3em;
+}
+
+.add-card-button {
+  margin: 0em 0.5em;
+}
+
+.highlighted-button {
+  outline: none;
+  border-width: 2px;
+  border-color: white;
+}
+

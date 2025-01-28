@@ -13,7 +13,7 @@ type HandSizeSelectorProps = {
  */
 export const HandSizeSelector: React.FC<HandSizeSelectorProps> = ({ handSize, onHandSizeChange }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
+    <div className='hand-size-selector'>
       <p>Handsize: </p>
       <input 
         type="number" 

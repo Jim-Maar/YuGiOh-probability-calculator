@@ -37,16 +37,16 @@ export const HandSelector : React.FC<HandSelectorProps> = ( {hand, cards, handIn
   return <Popup
     trigger = {
       <div 
-        className="button handSelector"
+        className="button hand-selector"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
         <ConjunctionSelectors hand={hand} cards={cards} handIndex={handIndex} />
-        {isHovering && <button onClick={() => onAddConjunction(handIndex)}>Add Conjunction</button>}
+        {isHovering && <button className='highlighted-button' onClick={() => onAddConjunction(handIndex)}>Add Conjunction</button>}
       </div>
     }
     position='right center'
   >
-    <button onClick={() => onDeleteHand(handIndex)}>Remove Hand</button>
+    <button className='highlighted-button' onClick={() => onDeleteHand(handIndex)}>Remove Hand</button>
   </Popup>
 }

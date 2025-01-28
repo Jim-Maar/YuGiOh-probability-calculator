@@ -40,8 +40,8 @@ export const TermSelector : React.FC<TermSelectorProbs> = ( {term, cards, handIn
     }
     >
       <div style={{display:'flex', flexDirection:'column'}}>
-        <button onClick={() => onDeleteTerm(handIndex, conjunctionIndex, termIndex)}>Delete Card</button>
-        <button onClick={() => onNegateTerm(handIndex, conjunctionIndex, termIndex)}>Negate Card</button>
+        <button className='highlighted-button' onClick={() => onDeleteTerm(handIndex, conjunctionIndex, termIndex)}>Delete Card</button>
+        <button className='highlighted-button' onClick={() => onNegateTerm(handIndex, conjunctionIndex, termIndex)}>Negate Card</button>
       </div>
   </Popup>
 }

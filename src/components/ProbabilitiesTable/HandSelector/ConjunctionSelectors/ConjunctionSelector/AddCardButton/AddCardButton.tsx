@@ -22,12 +22,13 @@ type AddCardButtonProps = {
 export const AddCardButton: React.FC<AddCardButtonProps> = ({ cards, handIndex, conjunctionIndex, onAddTerm }) => {
   return (
     <Popup
-      trigger={<button className="addCardButton">Add Card</button>}
+      trigger={<button className="add-card-button highlighted-button">Add Card</button>}
       position='right center'
     >
       <div style={{display:'flex', flexDirection:'column'}}>
         {cards.map((card, index) => (
-          <button 
+          <button
+            className='highlighted-button'
             key={index} 
             onClick={() => onAddTerm(handIndex, conjunctionIndex, index)}
           >

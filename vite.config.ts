@@ -12,5 +12,6 @@ export default defineConfig({
       { find: 'types', replacement: '/src/types' },
       { find: 'utils', replacement: '/src/utils' }
     ]
-  }
+  },
+  base: '/YuGiOh-probabiliy-calculator/',
 })

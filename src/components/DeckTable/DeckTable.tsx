@@ -26,6 +26,9 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
     if (card.minToDraw > card.maxToDraw || card.maxToDraw > card.numInDeck) {
       return [false, "Parameters need to satisfy Min <= Max <= Num"];
     }
+    if (card.numInDeck < 0 || card.minToDraw < 0 || card.maxToDraw < 0) {
+      return [false, "Parameters must not be negative"];
+    }
     return [true, "Input OK: No alert should be shown"]
   }
 

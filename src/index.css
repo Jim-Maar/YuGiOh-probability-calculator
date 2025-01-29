@@ -68,19 +68,6 @@ button:hover, .button:hover {
   border-color: #646cff;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button, .button {
-    background-color: #f9f9f9;
-  }
-}
-
 
 /*
 App styling
@@ -186,3 +173,27 @@ ProbabilitiesTable styling
   border-color: white;
 }
 
+/*
+  Media
+*/
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button, .button {
+    background-color: gray;
+  }
+
+  .highlighted-button {
+    border-color: black;
+  }
+
+  input {
+    background-color: lightgray;
+  }
+}

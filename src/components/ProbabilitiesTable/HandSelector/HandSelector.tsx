@@ -25,7 +25,7 @@ type HandSelectorProps = {
  * Hovering over the Handselector, shows an Add Conjunction button.
  * Clicking on the Handselector opens up a popup menu, which allows you to delete it.
  * 
- * @param {DNF} hand - The hand (combination of cards the user wants to draw)in Disjunctive Normal Form.
+ * @param {DNF} hand - The hand (combination of cards the user wants to draw) in Disjunctive Normal Form.
  * @param {Card[]} cards - Array of available cards to select from.
  * @param {number} handIndex - Index of this hand in the overall hands array.
  */

@@ -20,10 +20,21 @@ type AddCardButtonProps = {
  * @param {function} onAddTerm - Callback function to add a term to the conjunction.
  */
 export const AddCardButton: React.FC<AddCardButtonProps> = ({ cards, handIndex, conjunctionIndex, onAddTerm }) => {
+  const alertIfCardsEmpty = () => {
+    if (cards.length === 0) {
+      alert("Try adding some cards first :)");
+    }
+  };
+
   return (
     <Popup
-      trigger={<button className="add-card-button highlighted-button">Add Card</button>}
+      trigger={
+        <button className="add-card-button highlighted-button">
+          Add Card
+        </button>
+      }
       position='right center'
+      onOpen={alertIfCardsEmpty}
     >
       <div style={{display:'flex', flexDirection:'column'}}>
         {cards.map((card, index) => (

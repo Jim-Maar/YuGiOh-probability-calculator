@@ -22,7 +22,7 @@ function App() {
   const [cards, setCards] = useState<Card[]>([]);
   const [hands, setHands] = useState<DNF[]>([]);
 
-  function checkDeckFull(newCards: Card[], newDeckSize: number): boolean {
+  function isDeckFull(newCards: Card[], newDeckSize: number): boolean {
     const numCardsInDeck = newCards.map(card => card.numInDeck).reduce((acc, curr) => acc + curr, 0);
     if (numCardsInDeck > newDeckSize) {
       alert("Warning: Number of cards in deck is higher then the decksize");
@@ -31,15 +31,15 @@ function App() {
     return false;
   }
 
-  function onChangeDeckSize(newDeckSize: number) {
-    const deckFull = checkDeckFull(cards, newDeckSize);
+  function onDeckSizeChange(newDeckSize: number) {
+    const deckFull = isDeckFull(cards, newDeckSize);
     if (deckFull) {
       return;
     }
     setDeckSize(newDeckSize);
   }
 
-  function onChangeHandSize(newHandSize: number) {
+  function onHandSizeChange(newHandSize: number) {
     if (newHandSize > deckSize) {
       alert("Warning: Handsize is bigger then decksize");
     }
@@ -48,7 +48,7 @@ function App() {
 
   function onHandleAddCard(card: Card) {
     const newCards = [...cards, card];
-    const deckFull = checkDeckFull(newCards, deckSize);
+    const deckFull = isDeckFull(newCards, deckSize);
     if (deckFull) {
       return;
     }
@@ -66,7 +66,7 @@ function App() {
         break;
       case "numInDeck":
         newCards[cardIdx].numInDeck = parseInt(value);
-        const deckFull = checkDeckFull(newCards, deckSize);
+        const deckFull = isDeckFull(newCards, deckSize);
         if (deckFull) {
           return;
         }
@@ -101,8 +101,8 @@ function App() {
     <div className="app">
       <h1>YuGiOh Probability Calculator</h1>
       <Tutorial></Tutorial>
-      <DeckSizeSelector deckSize={deckSize} onDeckSizeChange={onChangeDeckSize}></DeckSizeSelector>
-      <HandSizeSelector handSize={handSize} onHandSizeChange={onChangeHandSize}></HandSizeSelector>
+      <DeckSizeSelector deckSize={deckSize} onDeckSizeChange={onDeckSizeChange}></DeckSizeSelector>
+      <HandSizeSelector handSize={handSize} onHandSizeChange={onHandSizeChange}></HandSizeSelector>
       <DeckTable cards={cards} onAddCard={onHandleAddCard} onRemoveCard={onHandleRemoveCard} onEditCard={onHandleEditCard}></DeckTable>
       <ProbabilitiesTable hands={hands} cards={cards} deckSize={deckSize} handSize={handSize} onChangeHands={setHands}></ProbabilitiesTable>
       <div style={{ height: '100px' }}></div>

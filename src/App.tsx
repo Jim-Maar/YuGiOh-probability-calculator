@@ -8,6 +8,8 @@ import { DeckTable } from './components/DeckTable/DeckTable'
 import { ProbabilitiesTable } from './components/ProbabilitiesTable/ProbabilitiesTable'
 import { DECKSIZE, HANDSIZE } from './constants/defaultCards'
 
+import assert from 'assert';
+
 /**
  * YuGiOh Probability Calculator - A React application for calculating probabilities of drawing various combinations of cards.
  * 
@@ -20,18 +22,74 @@ function App() {
   const [cards, setCards] = useState<Card[]>([]);
   const [hands, setHands] = useState<DNF[]>([]);
 
-  function onHandleAddCard(card : Card) {
-    setCards([...cards, card]);
+  function checkDeckFull(newCards: Card[], newDeckSize: number): boolean {
+    const numCardsInDeck = newCards.map(card => card.numInDeck).reduce((acc, curr) => acc + curr, 0);
+    if (numCardsInDeck > newDeckSize) {
+      alert("Warning: Number of cards in deck is higher then the decksize");
+      return true;
+    }
+    return false;
   }
 
-  function onHandleRemoveCard(i : number) {
+  function onChangeDeckSize(newDeckSize: number) {
+    const deckFull = checkDeckFull(cards, newDeckSize);
+    if (deckFull) {
+      return;
+    }
+    setDeckSize(newDeckSize);
+  }
+
+  function onChangeHandSize(newHandSize: number) {
+    if (newHandSize > deckSize) {
+      alert("Warning: Handsize is bigger then decksize");
+    }
+    setHandSize(newHandSize);
+  }
+
+  function onHandleAddCard(card: Card) {
+    const newCards = [...cards, card];
+    const deckFull = checkDeckFull(newCards, deckSize);
+    if (deckFull) {
+      return;
+    }
+    setCards(newCards);
+  }
+
+  function onHandleEditCard(cardIdx: number, variableName: string, value: string) {
+    if (value === "") {
+      return;
+    }
+    const newCards = [...cards];
+    switch (variableName) {
+      case "name":
+        newCards[cardIdx].name = value;
+        break;
+      case "numInDeck":
+        newCards[cardIdx].numInDeck = parseInt(value);
+        const deckFull = checkDeckFull(newCards, deckSize);
+        if (deckFull) {
+          return;
+        }
+        break;
+      case "minToDraw":
+        newCards[cardIdx].minToDraw = parseInt(value);
+        break;
+      case "maxToDraw":
+        newCards[cardIdx].maxToDraw = parseInt(value);
+        break;
+      default:
+        throw `variableName ${variableName} does not exist`
+    }
+    setCards(newCards);
+  }
+  function onHandleRemoveCard(i: number) {
     const newCards = [...cards];
     newCards.splice(i, 1);
     // Update all hands to maintain consistency after card removal
-    const newHands = hands.map(hand => 
+    const newHands = hands.map(hand =>
       hand.map(conjunction => {
         const newConjunction = conjunction.filter(([_, cardIndex]) => cardIndex !== i);
-        return newConjunction.map(([negation, cardIndex]): Term => 
+        return newConjunction.map(([negation, cardIndex]): Term =>
           [negation, cardIndex > i ? cardIndex - 1 : cardIndex])
       })
     )
@@ -43,11 +101,11 @@ function App() {
     <div className="app">
       <h1>YuGiOh Probability Calculator</h1>
       <Tutorial></Tutorial>
-      <DeckSizeSelector deckSize={deckSize} onDeckSizeChange={setDeckSize}></DeckSizeSelector>
-      <HandSizeSelector handSize={handSize} onHandSizeChange={setHandSize}></HandSizeSelector>
-      <DeckTable cards={cards} onAddCard={onHandleAddCard} onRemoveCard={onHandleRemoveCard}></DeckTable>
+      <DeckSizeSelector deckSize={deckSize} onDeckSizeChange={onChangeDeckSize}></DeckSizeSelector>
+      <HandSizeSelector handSize={handSize} onHandSizeChange={onChangeHandSize}></HandSizeSelector>
+      <DeckTable cards={cards} onAddCard={onHandleAddCard} onRemoveCard={onHandleRemoveCard} onEditCard={onHandleEditCard}></DeckTable>
       <ProbabilitiesTable hands={hands} cards={cards} deckSize={deckSize} handSize={handSize} onChangeHands={setHands}></ProbabilitiesTable>
-      <div style={{height: '100px'}}></div>
+      <div style={{ height: '100px' }}></div>
     </div>
   )
 }

@@ -5,6 +5,7 @@ type DeckTableProps = {
   cards: Card[];
   onAddCard: (card: Card) => void;
   onRemoveCard: (index: number) => void;
+  onEditCard: (cardIndex: number, variableName: string, value: string) => void;
 }
 
 /**
@@ -18,8 +19,8 @@ type DeckTableProps = {
  * @param {function} onAddCard - Callback function to add a new card to the deck.
  * @param {function} onRemoveCard - Callback function to remove a card from the deck by its index.
  */
-export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemoveCard }) => {
-  const isInputCorrect = (card: Card) : [boolean, string] => {
+export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemoveCard, onEditCard }) => {
+  const isInputCorrect = (card: Card): [boolean, string] => {
     if (card.name === "") {
       return [false, "Please input the name of the card"];
     }
@@ -53,7 +54,7 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
   return (
     <div className='table-section deck-table'>
       <h2>Cards</h2>
-      <table style={{width: '100%'}}>
+      <table style={{ width: '100%' }}>
         <thead>
           <tr className='table-row'>
             <th className='table-data first-column'>Card</th>
@@ -70,13 +71,28 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
                 <div className='table-data'>{card.name}</div>
               </td>
               <td className='regular-column'>
-                <div className='table-data'>{card.numInDeck}</div>
+                <input
+                  className='table-data'
+                  type='number'
+                  value={card.numInDeck}
+                  onChange={(e) => onEditCard(i, "numInDeck", e.target.value)}
+                />
               </td>
               <td className='regular-column'>
-                <div className='table-data'>{card.minToDraw}</div>
+                <input
+                  className='table-data'
+                  type='number'
+                  value={card.minToDraw}
+                  onChange={(e) => onEditCard(i, "minToDraw", e.target.value)}
+                />
               </td>
               <td className='regular-column'>
-                <div className='table-data'>{card.maxToDraw}</div>
+                <input
+                  className='table-data'
+                  type='number'
+                  value={card.maxToDraw}
+                  onChange={(e) => onEditCard(i, "maxToDraw", e.target.value)}
+                />
               </td>
               <td className='regular-column'>
                 <button className='table-data-button' onClick={() => onRemoveCard(i)}>Remove Card</button>
@@ -84,7 +100,7 @@ export const DeckTable: React.FC<DeckTableProps> = ({ cards, onAddCard, onRemove
             </tr>
           ))}
           <tr key={cards.length}>
-            <td colSpan={5} style={{padding: 0}}>
+            <td colSpan={5} style={{ padding: 0 }}>
               <form className='table-row' onSubmit={submitAddCardForm}>
                 <div className='first-column'>
                   <input className='table-data' type='text' name='name' placeholder='Name' />

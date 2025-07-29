@@ -36,11 +36,11 @@ export const HandContext = createContext<HandContextType | undefined>(undefined)
  * @param {function} onNegateTerm - Function to negate a term in a conjunction in a hand by their indices.
  */
 export const useHandContext = () => {
-    const context = useContext(HandContext);
-    if (context === undefined) {
-        throw new Error('useHandContext must be used within a HandContext.Provider');
-    }
-    return context;
+  const context = useContext(HandContext);
+  if (context === undefined) {
+    throw new Error('useHandContext must be used within a HandContext.Provider');
+  }
+  return context;
 };
 
 export const HandContextProvider: React.FC<HandContextProviderProps> = ({ children, hands, onChangeHands }) => {
@@ -65,16 +65,16 @@ export const HandContextProvider: React.FC<HandContextProviderProps> = ({ childr
     onChangeHands(newHands);
   };
 
-  const handleDeleteHand = (handIndex : number) => {
+  const handleDeleteHand = (handIndex: number) => {
     const newHands = [...hands];
-    newHands.splice(handIndex);
+    newHands.splice(handIndex, 1);
     onChangeHands(newHands);
   };
 
   const handleDeleteConjunction = (handIndex: number, conjunctionIndex: number): void => {
     const newHands = hands.map((hand, hIndex) => {
       if (hIndex !== handIndex) return hand;
-      const newHand =  [...hand];
+      const newHand = [...hand];
       newHand.splice(conjunctionIndex, 1);
       return newHand;
     });

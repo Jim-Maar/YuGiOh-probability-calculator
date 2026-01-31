@@ -40,3 +40,26 @@
 .read-the-docs {
   color: #888;
 }
+
+.share-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.share-section button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.share-section button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.share-section .warning {
+  color: #e74c3c;
+  font-size: 0.9em;
+}

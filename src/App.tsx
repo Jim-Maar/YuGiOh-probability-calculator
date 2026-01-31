@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Card } from 'types/card'
 import { DNF, Term } from 'types/dnf'
 import { Tutorial } from './components/Tutorial/Tutorial'
@@ -7,6 +7,7 @@ import { HandSizeSelector } from './components/HandSizeSelector/HandSizeSelector
 import { DeckTable } from './components/DeckTable/DeckTable'
 import { ProbabilitiesTable } from './components/ProbabilitiesTable/ProbabilitiesTable'
 import { DECKSIZE, HANDSIZE } from './constants/defaultCards'
+import { getStateFromUrl, updateUrlHash } from './utils/urlState'
 
 import assert from 'assert';
 
@@ -17,10 +18,17 @@ import assert from 'assert';
  * Adding and removing cards to the card table is handled in this component as this leads to a rerender of both the Deck Table and Probabilites Table.
  */
 function App() {
-  const [deckSize, setDeckSize] = useState(DECKSIZE);
-  const [handSize, setHandSize] = useState(HANDSIZE);
-  const [cards, setCards] = useState<Card[]>([]);
-  const [hands, setHands] = useState<DNF[]>([]);
+  // Initialize state from URL if present, otherwise use defaults
+  const initialState = useRef(getStateFromUrl());
+
+  const [deckSize, setDeckSize] = useState(initialState.current?.deckSize ?? DECKSIZE);
+  const [handSize, setHandSize] = useState(initialState.current?.handSize ?? HANDSIZE);
+  const [cards, setCards] = useState<Card[]>(initialState.current?.cards ?? []);
+  const [hands, setHands] = useState<DNF[]>(initialState.current?.hands ?? []);
+  // Sync state to URL whenever it changes
+  useEffect(() => {
+    updateUrlHash({ deckSize, handSize, cards, hands });
+  }, [deckSize, handSize, cards, hands]);
 
   function isDeckFull(newCards: Card[], newDeckSize: number): boolean {
     const numCardsInDeck = newCards.map(card => card.numInDeck).reduce((acc, curr) => acc + curr, 0);

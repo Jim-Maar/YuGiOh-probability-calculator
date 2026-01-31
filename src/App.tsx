@@ -31,12 +31,13 @@ function App() {
     return false;
   }
 
-  function onDeckSizeChange(newDeckSize: number) {
+  function onDeckSizeChange(newDeckSize: number): boolean {
     const deckFull = isDeckFull(cards, newDeckSize);
     if (deckFull) {
-      return;
+      return false;
     }
     setDeckSize(newDeckSize);
+    return true;
   }
 
   function onHandSizeChange(newHandSize: number) {
